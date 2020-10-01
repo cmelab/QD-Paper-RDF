@@ -1,0 +1,5 @@
+freud-analysis==2.3.0
+jupyterlab==2.2.8
+matplotlib==3.3.2
+numpy==1.19.2
+xlrd==1.2.0
