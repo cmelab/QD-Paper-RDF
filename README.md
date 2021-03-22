@@ -22,3 +22,5 @@ The jupyter notebooks currently encapsulate code for:
 Key parameters to `get\_dots2` are `size`, which specifies the number in pixels of the smallest quantum dots to identify, and `spacing` which controls a minimum spacing threshold between dots.
 
 get\_dots returns the x-y coordinates of the dots which are then used in analysis of the RDF and the areal density b.
+
+Opening this up to MSE150 on March 22nd.
