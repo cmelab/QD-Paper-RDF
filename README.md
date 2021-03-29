@@ -5,7 +5,6 @@ To install dependencies on bascottie for MSE 150 students:
     $ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
     $ bash Miniconda3-latest-Linux-x86_64.sh # accept license, default options
     $ source ~/.bashrc
-
     $ pip install -r requirements.txt
 ```
 
