@@ -1,6 +1,15 @@
 # Quantum Dot Image Analysis
 
-To install dependencies:
+To install dependencies on bascottie for MSE 150 students:
+```bash
+    $ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    $ bash Miniconda3-latest-Linux-x86_64.sh # accept license, default options
+    $ source ~/.bashrc
+    $ pip install -r requirements.txt
+```
+
+To create a conda environment (maybe OSX-specific?)
+(Not needed on bascottie right now)
 ```bash
     $ conda env create -f requirements.yaml
 ```
