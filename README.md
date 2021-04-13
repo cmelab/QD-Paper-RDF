@@ -21,7 +21,7 @@ Activate the qd conda environment and open the jupyter notebooks
 ```
 
 10 December 2020:
-The extract\_qd\_from\_afm jupyter notebooks contain software for identifying quantum dots in AFM(Atomic Force Microscopy) images and calculating their radial distribution functions.
+The extract\_qd\_from\_afm jupyter notebooks contain software for identifying quantum dots in AFM images and calculating their radial distribution functions.
 All of the AFM images come from the 86, 106, 107, and 87 samples from the Simmonds lab google drive, and tifs have been renamed with a convention `Un.tif`, where U is an integer representing the number of microns across each of the square images is, and n is a letter index if there are multiple images of the same size. 
 The jupyter notebooks currently encapsulate code for:
 - Gaussian filtering of the initial images
