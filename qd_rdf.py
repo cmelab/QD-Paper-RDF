@@ -12,11 +12,17 @@ import os
     
 def get_dots2(file,microns=2,compare=False,size=2,spacing=5):
     '''
+<<<<<<< HEAD
     Parameters: dots: ndarray
                     List of qd centers(x and y coordinates)
                 L: float
                     Length of the image from which the dots were found, in microns
     '''
+=======
+        Get a docstring started.
+    '''
+    # put in a single line comment
+>>>>>>> 726b0c6cd48d02a3b263e6b07f482eca94a01914
     image = color.rgb2gray(io.imread(file))
     i1 = filters.gaussian(image,sigma=.7)
     i1 = ndimage.maximum_filter(i1,size=size,mode='constant')
@@ -48,4 +54,8 @@ def plot_rdf(dots,L,plot=True):
         plt.show()
     return rdf.bin_centers, rdf.rdf
 
+<<<<<<< HEAD
 data_path = "raw_samples/"
+=======
+data_path = "Chicken Nuggets"
+>>>>>>> 726b0c6cd48d02a3b263e6b07f482eca94a01914
