@@ -46,8 +46,4 @@ def plot_rdf(dots,L,plot=True):
         plt.show()
     return rdf.bin_centers, rdf.rdf
 
-<<<<<<< HEAD
 data_path = "raw_samples/"
-=======
-data_path = "Chicken Nuggets"
->>>>>>> 726b0c6cd48d02a3b263e6b07f482eca94a01914
