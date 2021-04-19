@@ -10,9 +10,18 @@ from freud import box, density
 from scipy import stats
 import os
     
-def get_dots2(file,microns=2,compare=False,size=2,spacing=5):
+def get_dots(file,microns=2,compare=False,size=2,spacing=5):
     '''
-        Get a docstring started.
+      Parameters: file : string
+			The name of the file (an image)
+		  microns : integer
+			 TO DO SCALE FACTOR
+		  compare : bool
+			Display coordinates of peak local max
+		  size : integer
+			Size of the max filter
+		  spacing : integer
+			Minimum dstance between peaks
     '''
     # put in a single line comment
     image = color.rgb2gray(io.imread(file))
@@ -34,6 +43,8 @@ def plot_rdf(dots,L,plot=True):
                         List of qd centers (x and y coordinates)
                     L : float
                         Lenght of the image from which the dots were found, in microns
+		    plot : bool
+			Decides whether plot is displayed
     '''
     box = freud.box.Box(L,L,is2D=True)
     box.periodic=[True,True,False]
@@ -45,5 +56,4 @@ def plot_rdf(dots,L,plot=True):
         plt.ylabel("<g(r)>")
         plt.show()
     return rdf.bin_centers, rdf.rdf
-
-data_path = "Chicken Nuggets"
+data_path = './'
