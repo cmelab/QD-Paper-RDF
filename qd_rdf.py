@@ -10,9 +10,18 @@ from freud import box, density
 from scipy import stats
 import os
     
-def get_dots2(file,microns=2,compare=False,size=2,spacing=5):
+def get_dots(file,microns=2,compare=False,size=2,spacing=5):
     '''
-        Get a docstring started.
+      Parameters: file : string
+			 the name of the file (an image)
+		  microns : integer
+			 TO DO SCALE FACTOR
+		  compare : bool
+			 display coordinates of peak local max
+		  size : integer
+			 size of the max filter
+		  spacing : integer
+			 minimum dstance between peaks
     '''
     # put in a single line comment
     image = color.rgb2gray(io.imread(file))
@@ -45,5 +54,4 @@ def plot_rdf(dots,L,plot=True):
         plt.ylabel("<g(r)>")
         plt.show()
     return rdf.bin_centers, rdf.rdf
-
-data_path = "Chicken Nuggets"
+data_path = './'
