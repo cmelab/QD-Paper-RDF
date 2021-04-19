@@ -13,15 +13,15 @@ import os
 def get_dots(file,microns=2,compare=False,size=2,spacing=5):
     '''
       Parameters: file : string
-			 the name of the file (an image)
+			The name of the file (an image)
 		  microns : integer
 			 TO DO SCALE FACTOR
 		  compare : bool
-			 display coordinates of peak local max
+			Display coordinates of peak local max
 		  size : integer
-			 size of the max filter
+			Size of the max filter
 		  spacing : integer
-			 minimum dstance between peaks
+			Minimum dstance between peaks
     '''
     # put in a single line comment
     image = color.rgb2gray(io.imread(file))
@@ -43,6 +43,8 @@ def plot_rdf(dots,L,plot=True):
                         List of qd centers (x and y coordinates)
                     L : float
                         Lenght of the image from which the dots were found, in microns
+		    plot : bool
+			Decides whether plot is displayed
     '''
     box = freud.box.Box(L,L,is2D=True)
     box.periodic=[True,True,False]
