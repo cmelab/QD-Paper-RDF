@@ -10,7 +10,7 @@ from freud import box, density
 from scipy import stats
 import os
     
-def get_dots2(file,microns=2,compare=False,size=2,spacing=5):
+def get_dots(file,microns=2,compare=False,size=2,spacing=5):
     '''
         Get a docstring started.
     '''
