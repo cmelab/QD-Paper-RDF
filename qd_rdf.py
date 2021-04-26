@@ -56,5 +56,4 @@ def plot_rdf(dots,L,plot=True):
         plt.ylabel("<g(r)>")
         plt.show()
     return rdf.bin_centers, rdf.rdf
-
-data_path = "raw_samples/"
+data_path = './raw_samples/'
