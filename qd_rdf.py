@@ -11,16 +11,21 @@ import os
     
 def get_dots(file,microns=2,compare=False,size=2,spacing=5):
     '''
-      Parameters: file : string
+      Parameters:
+                  file : string
 			The name of the file (an image)
 		  microns : integer
-			 TO DO SCALE FACTOR
+			It is the actual size of the image in microns
 		  compare : bool
 			Display coordinates of peak local max
 		  size : integer
 			Size of the max filter
 		  spacing : integer
 			Minimum dstance between peaks
+      Return:
+                  : numpy array
+                        It is the array of micron coordinates of dots
+                        with a zero appended to each row
     '''
     # put in a single line comment
     image = color.rgb2gray(io.imread(file))
@@ -33,21 +38,30 @@ def get_dots(file,microns=2,compare=False,size=2,spacing=5):
     centroids = []
     for region in measure.regionprops(label_img):
         centroids.append(region.centroid)
+    # converting from image pixel coordinates to actual physical coordinates
     scaled = microns*np.asarray(centroids)/image.shape - [microns/2,microns/2]
+    # by subtracting the center of the image, we are dictating new origin
+    # center of the image now in cartesin coordinate system
     return np.append(scaled,np.zeros((len(scaled),1)),axis=1)
 
 def plot_rdf(dots,L,plot=True):
     '''
-        Parameters: dots : ndarray
+        Parameters:
+		    dots : ndarray
                         List of qd centers (x and y coordinates)
                     L : float
                         Lenght of the image from which the dots were found, in microns
 		    plot : bool
 			Decides whether plot is displayed
+        Return:
+		   rdf.bin_centers : numpy.ndarray
+                        It is the rdf histogram bin centers
+                   rdf.rdf : numpy.ndarray
+                        It is the histogram of the RDF values 
     '''
     box = freud.box.Box(L,L,is2D=True)
     box.periodic=[True,True,False]
-    rdf = freud.density.RDF(20,.49,normalize=True)
+    rdf = freud.density.RDF(bins=20,r_max=.49,normalize=True)
     rdf.compute(system=(box,dots),reset=True)
     if plot:
         plt.scatter(rdf.bin_centers, rdf.rdf)
