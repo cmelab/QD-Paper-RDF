@@ -7,7 +7,6 @@ import numpy as np
 import xlrd
 import freud.box
 from freud import box, density
-from scipy import stats
 import os
     
 def get_dots(file,microns=2,compare=False,size=2,spacing=5):
