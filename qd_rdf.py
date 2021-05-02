@@ -32,13 +32,18 @@ def get_dots(file,microns=2,compare=False,size=2,spacing=5):
     i1 = filters.gaussian(image,sigma=.7)
     i1 = ndimage.maximum_filter(i1,size=size,mode='constant')
     coordinates = peak_local_max(i1, min_distance=spacing,indices=False)
+
+# Encapsulated the comparison section, as it is not specific to a particular file -@s-e-pooley
+def comparison():
     if compare:
         io.imshow(image -coordinates)
     label_img = measure.label(coordinates)
     centroids = []
     for region in measure.regionprops(label_img):
         centroids.append(region.centroid)
-    # converting from image pixel coordinates to actual physical coordinates
+   
+
+ # converting from image pixel coordinates to actual physical coordinates
     scaled = microns*np.asarray(centroids)/image.shape - [microns/2,microns/2]
     # by subtracting the center of the image, we are dictating new origin
     # center of the image now in cartesin coordinate system
