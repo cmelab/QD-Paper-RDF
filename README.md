@@ -1,6 +1,15 @@
 # Quantum Dot Image Analysis
 
-To install dependencies:
+To install dependencies on bascottie for MSE 150 students:
+```bash
+    $ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    $ bash Miniconda3-latest-Linux-x86_64.sh # accept license, default options
+    $ source ~/.bashrc
+    $ pip install -r requirements.txt
+```
+
+To create a conda environment (maybe OSX-specific?)
+(Not needed on bascottie right now)
 ```bash
     $ conda env create -f requirements.yaml
 ```
@@ -12,7 +21,7 @@ Activate the qd conda environment and open the jupyter notebooks
 ```
 
 10 December 2020:
-The extract\_qd\_from\_afm jupyter notebooks contain software for identifying quantum dots in AFM images and calculating their radial distribution functions.
+The extract\_qd\_from\_afm jupyter notebooks contain software for identifying quantum dots in AFM(Atomic Force Microscopy) images and calculating their radial distribution functions.
 All of the AFM images come from the 86, 106, 107, and 87 samples from the Simmonds lab google drive, and tifs have been renamed with a convention `Un.tif`, where U is an integer representing the number of microns across each of the square images is, and n is a letter index if there are multiple images of the same size. 
 The jupyter notebooks currently encapsulate code for:
 - Gaussian filtering of the initial images
@@ -22,3 +31,5 @@ The jupyter notebooks currently encapsulate code for:
 Key parameters to `get\_dots2` are `size`, which specifies the number in pixels of the smallest quantum dots to identify, and `spacing` which controls a minimum spacing threshold between dots.
 
 get\_dots returns the x-y coordinates of the dots which are then used in analysis of the RDF and the areal density b.
+
+Opening this up to MSE150 on March 22nd.
