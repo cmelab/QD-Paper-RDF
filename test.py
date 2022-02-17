@@ -2,9 +2,16 @@
 from skimage import io
 import numpy
 from qd_rdf import data_path, plot_rdf, get_dots
+<<<<<<< HEAD
+import plot_data
+
+test_filename = "raw_samples/106/5a.tif"
+test_array = io.imread(test_filename)
+=======
 
 test_filename = "106/5a.tif"
 test_array = io.imread(data_path+test_filename)
+>>>>>>> b66ca2b718b19712795a004fa36d4974dd01e60f
 print(type(test_array))
 assert(type(test_array)==type(numpy.zeros(1)))
 
