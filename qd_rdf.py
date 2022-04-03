@@ -5,8 +5,10 @@ from skimage.feature import peak_local_max
 from scipy import ndimage 
 import numpy as np
 import xlrd
-import freud.box
-from freud import box, density
+#import freud.box
+from freud.box import Box
+from freud.density import RDF
+#from freud import box, density
 import os
     
 def get_dots(file,microns=2,compare=False,size=2,spacing=5):
@@ -59,9 +61,9 @@ def plot_rdf(dots,L,plot=True):
                    rdf.rdf : numpy.ndarray
                         It is the histogram of the RDF values 
     '''
-    box = freud.box.Box(L,L,is2D=True)
+    box = Box(L,L,is2D=True)
     box.periodic=[True,True,False]
-    rdf = freud.density.RDF(bins=20,r_max=.49,normalize=True)
+    rdf = RDF(bins=20,r_max=.49,normalize=True)
     rdf.compute(system=(box,dots),reset=True)
     if plot:
         plt.scatter(rdf.bin_centers, rdf.rdf)
