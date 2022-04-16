@@ -173,16 +173,17 @@ def process_single_file(filepath: str, max_sigma: float, thresh: float, pick_ind
         print(f"Saved to {output_path}")
 
 if __name__ == '__main__':
-    parser = ArgumentParser()
-    parser.add_argument('target', type=str, default=None, help='image directory or filename')
+    parser = ArgumentParser("autolabel-parser")
+    parser.add_argument('--target', type=str, required=True, help='image directory or filename')
     parser.add_argument('--max_sigma', type=int, default=5, required=False, help='The maximum standard deviation for Gaussian kernel. Keep this high to detect larger blobs. Range of 1-20 recommended.')
     parser.add_argument('--threshold', type=float, default=0.1, required=False, help='The absolute lower bound for scale space maxima. Local maxima smaller than threshold are ignored. Reduce this to detect blobs with lower intensities. Range 0.0-0.2 recommended.')
-    parser.add_argument('--show',  default=False, action="store_true", required=False, help="flag to show preview of all 3 algorithms with the given settings on an example image.")
-    parser.add_argument('--save', default=False, action="store_true", required=False, help="flag to use the specified algorithm (LoG, DoG, DoH) to label all images and save labels as JSON files.")
-    parser.add_argument('--log', default=False, action="store_true", required=False, help="Laplacian of Gaussian (leftmost image in --show mode")
-    parser.add_argument('--dog',  default=False, action="store_true", required=False, help="Difference of Gaussian (middle image in --show mode)")
-    parser.add_argument('--doh',  default=False, action="store_true", required=False, help="Determinant of Hessian (rightmost image in --show mode)")
+    parser.add_argument('--show', action="store_true", help="flag to show preview of all 3 algorithms with the given settings on an example image.")
+    parser.add_argument('--save', action="store_true", help="flag to use the specified algorithm (LoG, DoG, DoH) to label all images and save labels as JSON files.")
+    parser.add_argument('--log', action="store_true", help="Laplacian of Gaussian (leftmost image in --show mode")
+    parser.add_argument('--dog', action="store_true", help="Difference of Gaussian (middle image in --show mode)")
+    parser.add_argument('--doh', action="store_true", help="Determinant of Hessian (rightmost image in --show mode)")
     args = parser.parse_args()
+    print(f"Autolabel parameters: {args}")
     
     # validate algo if --save specified
     pick_index = None
@@ -202,11 +203,4 @@ if __name__ == '__main__':
             sys.exit(0)
     
     # execute script with these params
-    print("Executing autolabel script with params:")
-    print(f"dir: {args.target}")
-    print(f"max_sigma: {args.max_sigma}")
-    print(f"threshold: {args.threshold}")
-    print(f"show: {args.show}")
-    print(f"save: {args.save}")
-    print(f"algorithm: {algo_name}")
     main(args.target, args.max_sigma, args.threshold, pick_index, args.show, args.save)
