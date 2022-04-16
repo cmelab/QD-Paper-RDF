@@ -13,6 +13,9 @@ import matplotlib.pyplot as plt
 
 
 def main(target_dir_or_file, max_sigma=5, thresh=0.1, pick_index=None, show=True, save=False):
+    '''This script uses blob detection features of skimage (with parameters set by the user) to
+    automatically generate annotations for quantum dots in the COCO format. It can operate on
+    single image files, or recursively operate on directories of images.'''
     if os.path.isdir(target_dir_or_file):
         process_image_dir(target_dir_or_file, max_sigma, thresh, pick_index, show, save)
     elif os.path.isfile(target_dir_or_file):
@@ -172,7 +175,9 @@ def process_single_file(filepath: str, max_sigma: float, thresh: float, pick_ind
         print(f"Saved to {output_path}")
 
 if __name__ == '__main__':
-    parser = ArgumentParser("autolabel-parser")
+    parser = ArgumentParser("autolabel-parser", description="""This script uses blob detection features of skimage (with parameters set by the user) to
+    automatically generate annotations for quantum dots in the COCO format. It can operate on
+    single image files, or recursively operate on directories of images.""")
     parser.add_argument('--target', type=str, required=True, help='image directory or filename')
     parser.add_argument('--max_sigma', type=int, default=5, required=False, help='The maximum standard deviation for Gaussian kernel. Keep this high to detect larger blobs. Range of 1-20 recommended.')
     parser.add_argument('--threshold', type=float, default=0.1, required=False, help='The absolute lower bound for scale space maxima. Local maxima smaller than threshold are ignored. Reduce this to detect blobs with lower intensities. Range 0.0-0.2 recommended.')
@@ -186,17 +191,13 @@ if __name__ == '__main__':
     
     # validate algo if --save specified
     pick_index = None
-    algo_name = None
     if args.save:
         if args.log:
             pick_index = 0
-            algo_name = "Laplacian of Gaussian (leftmost image in --show mode"
         elif args.dog:
             pick_index = 1
-            algo_name = "Difference of Gaussian (middle image in --show mode)"
         elif args.doh:
             pick_index = 2
-            algo_name = "Determinant of Hessian (rightmost image in --show mode)"
         else:
             print("You must choose an algorithm (--log, --dog, or --doh) to save annotations. Use --help for more details.")
             sys.exit(0)
