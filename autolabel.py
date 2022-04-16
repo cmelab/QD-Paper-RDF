@@ -1,6 +1,5 @@
 import os
 import sys
-import glob
 from math import sqrt
 from skimage.io import imread
 from skimage.feature import blob_dog, blob_log, blob_doh
