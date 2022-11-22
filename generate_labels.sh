@@ -1,0 +1,21 @@
+#!/bin/bash
+python3 autolabel.py --target="input_dir/32" --max_sigma=5 --threshold=0.1 --log --save &
+python3 autolabel.py --target="input_dir/106" --max_sigma=5 --threshold=0.2 --dog --save &
+python3 autolabel.py --target="input_dir/106/2a.tif" --max_sigma=5 --threshold=0.1 --dog --save &
+python3 autolabel.py --target="input_dir/106/2b.tif" --max_sigma=5 --threshold=0.1 --dog --save &
+python3 autolabel.py --target="input_dir/106/2c.tif" --max_sigma=5 --threshold=0.1 --dog --save &
+python3 autolabel.py --target="input_dir/106/5a.tif" --max_sigma=3 --threshold=0.05 --log --save &
+python3 autolabel.py --target="input_dir/107" --max_sigma=5 --threshold=0.1 --dog --save &
+python3 autolabel.py --target="input_dir/107/5a.tif" --max_sigma=5 --threshold=0.1 --log --save &
+python3 autolabel.py --target="input_dir/132" --max_sigma=5 --threshold=0.1 --log --save &
+python3 autolabel.py --target="input_dir/157" --max_sigma=5 --threshold=0.1 --dog --save &
+python3 autolabel.py --target="input_dir/157/5a.tif" --max_sigma=5 --threshold=0.05 --dog --save &
+python3 autolabel.py --target="input_dir/404" --max_sigma=5 --threshold=0.1 --dog --save &
+python3 autolabel.py --target="input_dir/405" --max_sigma=5 --threshold=0.1 --dog --save &
+python3 autolabel.py --target="input_dir/406" --max_sigma=10 --threshold=0.1 --dog --save &
+python3 autolabel.py --target="input_dir/86" --max_sigma=5 --threshold=0.2 --dog --save &
+python3 autolabel.py --target="input_dir/86/2n.tif" --max_sigma=20 --threshold=0.1 --dog --save &
+python3 autolabel.py --target="input_dir/86/2o.tif" --max_sigma=20 --threshold=0.1 --dog --save &
+python3 autolabel.py --target="input_dir/86/2p.tif" --max_sigma=20 --threshold=0.2 --dog --save &
+python3 autolabel.py --target="input_dir/87" --max_sigma=20 --threshold=0.15 --dog --save &
+python3 autolabel.py --target="input_dir/87/5a.tif" --max_sigma=20 --threshold=0.1 --log --save &
